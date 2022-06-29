@@ -1,4 +1,4 @@
-import { useToken } from "wagmi";
+import { useToken } from "wagmi"
 
 import {
   Box,
@@ -8,36 +8,31 @@ import {
   Button,
   useDisclosure,
   Stack,
-} from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+} from "@chakra-ui/react"
+import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons"
 
-import { NFTISM_TOKEN_CONFIG } from "@lib/blockchain";
-import { ConnectButton } from "@components/ui/ConnectButton";
-import Logo from "@components/ui/Logo";
-import useUser from "@lib/hooks/useUser";
-import NavLink from "@components/ui/NavLink";
-import { UserRole } from "@lib/session";
+import { NFTISM_TOKEN_CONFIG } from "@lib/blockchain"
+import { ConnectButton } from "@components/ui/ConnectButton"
+import Logo from "@components/ui/Logo"
+import useUser from "@lib/hooks/useUser"
+import NavLink from "@components/ui/NavLink"
+import { UserRole } from "@lib/session"
 
 type NamedLink = {
-  name: string;
-  href: string;
-  requiresLogin?: boolean;
-};
+  name: string
+  href: string
+  requiresLogin?: boolean
+}
 
 const Links: NamedLink[] = [
   {
     name: "Archives",
-    href: "/blog",
+    href: "https://www.kennyschachter.art/",
     requiresLogin: true,
   },
   {
-    name: "Merch",
-    href: "/shop",
-    requiresLogin: true,
-  },
-  {
-    name: "Price Chart",
-    href: "https://www.dextools.io/app/ether/pair-explorer/0x265e4776011d61b52e9ab37827590ab7efbdae89",
+    name: "Price",
+    href: "https://www.dextools.io/app/ether/pair-explorer/0x265e4776011d61b52e9ab37827590ab7efbdae89 ",
     requiresLogin: false,
   },
   {
@@ -45,12 +40,27 @@ const Links: NamedLink[] = [
     href: "https://app.sushi.com/swap?outputCurrency=0xf8fe4dbe106ac2a1e6c96c3ca77b344a1b1a49e1",
     requiresLogin: false,
   },
-];
+  {
+    name: "Merch",
+    href: "",
+    requiresLogin: false,
+  },
+  {
+    name: "Prize",
+    href: "",
+    requiresLogin: false,
+  },
+  {
+    name: "Raffles",
+    href: "/raffle",
+    requiresLogin: false,
+  },
+]
 
 const Header: React.FC = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const { user } = useUser();
-  const [, watchToken] = useToken();
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { user } = useUser()
+  const [, watchToken] = useToken()
 
   return (
     <>
@@ -72,15 +82,31 @@ const Header: React.FC = () => {
               spacing={4}
               display={{ base: "none", md: "flex" }}
             >
-              {Links.map(({ href, name, requiresLogin }) => (
-                <NavLink
-                  href={href}
-                  key={href}
-                  disabled={!!requiresLogin && user?.role() !== UserRole.MEMBER}
-                >
-                  {name}
-                </NavLink>
-              ))}
+              {Links.map(({ href, name, requiresLogin }) => {
+                if (href) {
+                  return (
+                    <NavLink
+                      href={href}
+                      key={href}
+                      disabled={
+                        !!requiresLogin && user?.role() !== UserRole.MEMBER
+                      }
+                    >
+                      {name}
+                    </NavLink>
+                  )
+                } else {
+                  return (
+                    <Button
+                      color="black"
+                      variant="link"
+                      _focus={{ boxShadow: "" }}
+                    >
+                      {name}
+                    </Button>
+                  )
+                }
+              })}
               <Button
                 onClick={() => watchToken(NFTISM_TOKEN_CONFIG)}
                 color="black"
@@ -99,15 +125,31 @@ const Header: React.FC = () => {
         {isOpen ? (
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
-              {Links.map(({ href, name, requiresLogin }) => (
-                <NavLink
-                  href={href}
-                  key={href}
-                  disabled={!!requiresLogin && user?.role() !== UserRole.MEMBER}
-                >
-                  {name}
-                </NavLink>
-              ))}
+              {Links.map(({ href, name, requiresLogin }) => {
+                if (href) {
+                  return (
+                    <NavLink
+                      href={href}
+                      key={href}
+                      disabled={
+                        !!requiresLogin && user?.role() !== UserRole.MEMBER
+                      }
+                    >
+                      {name}
+                    </NavLink>
+                  )
+                } else {
+                  return (
+                    <Button
+                      color="black"
+                      variant="link"
+                      _focus={{ boxShadow: "" }}
+                    >
+                      {name}
+                    </Button>
+                  )
+                }
+              })}
               <Button
                 _focus={{ boxShadow: "" }}
                 onClick={() => watchToken(NFTISM_TOKEN_CONFIG)}
@@ -121,7 +163,7 @@ const Header: React.FC = () => {
         ) : null}
       </Box>
     </>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

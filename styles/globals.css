@@ -16,5 +16,47 @@ a {
 }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+}
+
+.image-1 span {
+  display: block !important;
+  max-width: 350px !important;
+  max-height: 250px !important;
+  width: auto !important;
+  height: auto !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%);
+  left: 8% !important;
+}
+
+@media screen and (max-width: 992px) {
+  .image-1 span {
+    display: block !important;
+    max-width: 300px !important;
+    max-height: 200px !important;
+    width: auto !important;
+    height: auto !important;
+    position: absolute !important;
+    top: 27% !important;
+    transform: translate(-50%, -50%);
+    left: 50% !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .image-1 span {
+    display: block !important;
+    max-width: 300px !important;
+    max-height: 200px !important;
+    width: auto !important;
+    height: auto !important;
+    position: absolute !important;
+    top: 28% !important;
+    transform: translate(-50%, -50%);
+    left: 50% !important;
+  }
 }
