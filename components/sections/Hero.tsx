@@ -35,7 +35,7 @@ const Hero: React.FC<HeroProps> = ({
       mb={16}
     >
       <Box w={{ base: "80%", sm: "60%", md: "60%" }} mb={{ base: 12, md: 0 }}>
-        <Image src={image} alt="NFTism" size="100%" rounded="full" />
+        <Image src={image} alt="NFTism" sizes="100%" rounded="full" />
       </Box>
       <Stack spacing={4} w={{ base: "80%", md: "40%" }} align={["center"]}>
         <Heading
