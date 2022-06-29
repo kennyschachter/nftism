@@ -5,6 +5,6 @@ module.exports = {
     externalDir: true,
   },
   images: {
-    domains: ["www.kennyschachter.art"],
+    domains: ["www.kennyschachter.art", "res.cloudinary.com"],
   },
 };
