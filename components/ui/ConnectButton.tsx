@@ -20,7 +20,7 @@ const ConnectorButtons: React.FC = () => {
   const { login } = useLogin();
 
   return (
-    <Flex spacing="1em" direction="column">
+    <Flex style={{ padding: "1em" }} direction="column">
       {data.connectors.map((connector) => (
         <Button
           disabled={!connector.ready}

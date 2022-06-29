@@ -1,4 +1,4 @@
-import { useToken } from "wagmi"
+import { useToken } from "wagmi";
 
 import {
   Box,
@@ -8,21 +8,21 @@ import {
   Button,
   useDisclosure,
   Stack,
-} from "@chakra-ui/react"
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons"
+} from "@chakra-ui/react";
+import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 
-import { NFTISM_TOKEN_CONFIG } from "@lib/blockchain"
-import { ConnectButton } from "@components/ui/ConnectButton"
-import Logo from "@components/ui/Logo"
-import useUser from "@lib/hooks/useUser"
-import NavLink from "@components/ui/NavLink"
-import { UserRole } from "@lib/session"
+import { NFTISM_TOKEN_CONFIG } from "@lib/blockchain";
+import { ConnectButton } from "@components/ui/ConnectButton";
+import Logo from "@components/ui/Logo";
+import useUser from "@lib/hooks/useUser";
+import NavLink from "@components/ui/NavLink";
+import { UserRole } from "@lib/session";
 
 type NamedLink = {
-  name: string
-  href: string
-  requiresLogin?: boolean
-}
+  name: string;
+  href: string;
+  requiresLogin?: boolean;
+};
 
 const Links: NamedLink[] = [
   {
@@ -55,12 +55,12 @@ const Links: NamedLink[] = [
     href: "/raffle",
     requiresLogin: false,
   },
-]
+];
 
 const Header: React.FC = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const { user } = useUser()
-  const [, watchToken] = useToken()
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { user } = useUser();
+  const [, watchToken] = useToken();
 
   return (
     <>
@@ -94,7 +94,7 @@ const Header: React.FC = () => {
                     >
                       {name}
                     </NavLink>
-                  )
+                  );
                 } else {
                   return (
                     <Button
@@ -104,7 +104,7 @@ const Header: React.FC = () => {
                     >
                       {name}
                     </Button>
-                  )
+                  );
                 }
               })}
               <Button
@@ -137,7 +137,7 @@ const Header: React.FC = () => {
                     >
                       {name}
                     </NavLink>
-                  )
+                  );
                 } else {
                   return (
                     <Button
@@ -147,7 +147,7 @@ const Header: React.FC = () => {
                     >
                       {name}
                     </Button>
-                  )
+                  );
                 }
               })}
               <Button
@@ -163,7 +163,7 @@ const Header: React.FC = () => {
         ) : null}
       </Box>
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
