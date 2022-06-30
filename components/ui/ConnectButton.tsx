@@ -15,21 +15,17 @@ import {
 import useLogin from "@lib/hooks/useLogin";
 import useUser from "@lib/hooks/useUser";
 
-const ConnectorButtons: React.FC = () => {
+const ConnectorButtons: React.FC = ({ buttonClass }: any) => {
   const [{ data, error }, connect] = useConnect();
   const { login } = useLogin();
 
   return (
     <Flex style={{ padding: "1em" }} direction="column">
       {data.connectors.map((connector) => (
-        <Button
+        <button
           disabled={!connector.ready}
           key={connector.id}
-          variant={"outline"}
-          colorScheme={"blackAlpha"}
-          size="md"
-          my="0.15em"
-          border="none"
+          className={buttonClass}
           onClick={async () => {
             await connect(connector);
             await login();
@@ -37,7 +33,7 @@ const ConnectorButtons: React.FC = () => {
         >
           {connector.name}
           {!connector.ready && " (unsupported)"}
-        </Button>
+        </button>
       ))}
 
       {error && <div>{error?.message ?? "Failed to connect"}</div>}
@@ -45,7 +41,7 @@ const ConnectorButtons: React.FC = () => {
   );
 };
 
-export const ConnectButton: React.FC = () => {
+export const ConnectButton: React.FC = ({ buttonClass }: any) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [{ data: connectData, error: connectError, loading: connectLoading }] =
     useConnect();
@@ -58,13 +54,8 @@ export const ConnectButton: React.FC = () => {
 
   return (
     <>
-      <Button
-        variant={"outline"}
-        colorScheme={"red"}
-        _hover={{ bg: "red.500", color: "white" }}
-        size="md"
-        mr={4}
-        isLoading={connectLoading || accountLoading}
+      <button
+        className={buttonClass}
         onClick={
           connectData.connected
             ? user?.isLoggedIn
@@ -83,8 +74,8 @@ export const ConnectButton: React.FC = () => {
           ? user?.isLoggedIn
             ? "Logout"
             : "Sign in"
-          : "Connect"}
-      </Button>
+          : "CONNECT"}
+      </button>
       <Modal
         onClose={onClose}
         isOpen={isOpen && !connectData.connected}

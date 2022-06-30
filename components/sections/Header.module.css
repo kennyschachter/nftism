@@ -1,0 +1,121 @@
+@font-face {
+  font-family: "PublicSans";
+  src: url("../../assets/fonts/PublicSans-VariableFont_wght.ttf");
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  color: #000;
+  font-family: PublicSans;
+  padding: 20px;
+}
+
+.logo {
+  width: 106px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.link {
+  font-size: 16px;
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.btn {
+  border: 2px solid #000;
+  padding: 10px;
+  border-radius: 30px;
+  cursor: pointer;
+  max-height: 50px;
+}
+
+.link a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 400;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.icon span {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.dropdown {
+  max-width: 300px;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 20px;
+  top: 70px;
+  z-index: 2;
+  background: #fff;
+}
+
+.dropdown .link {
+  margin-left: 0;
+  margin: 10px 5px;
+}
+
+@media screen and (max-width: 1200px) {
+  .btn {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .header {
+    padding: 15px;
+    align-items: flex-start;
+  }
+
+  .icon {
+    width: 40px;
+    height: 16px;
+  }
+
+  .icon span {
+    width: 40px !important;
+    height: 16px !important;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 16px;
+    padding: 10px 6px;
+    font-size: 10px !important;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .btn {
+    padding: 5px;
+    font-size: 10px !important;
+  }
+
+  .link {
+    font-size: 14px;
+    margin-left: 0;
+  }
+
+  .dropdown {
+    width: 90%;
+    left: 10px;
+  }
+
+  .dropdown .link {
+    margin: 10px;
+  }
+}

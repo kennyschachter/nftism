@@ -1,6 +1,5 @@
 import { Flex, Spacer } from "@chakra-ui/react";
 import HeadSection from "@components/sections/HeadSection";
-import Header from "@components/sections/Header";
 
 import styles from "../../styles/LandingLayout.module.scss";
 
@@ -18,8 +17,7 @@ const LandingLayout: React.FC<Props> = ({ children }) => {
       className={styles.animate}
     >
       <HeadSection />
-      <Header />
-      <Spacer m={2} />
+      {/* <Spacer m={2} /> */}
       {children}
       {/* <Footer /> */}
     </Flex>

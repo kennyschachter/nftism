@@ -7,7 +7,7 @@ import styles from "./index.module.css";
 
 const Raffle = ({ result, value: { showBuyForm, setShowBuyForm } }) => {
   return (
-    <LandingLayout>
+    <LandingLayout value={{ showBuyForm, setShowBuyForm }}>
       <div className={styles.home}>
         <Head>
           <title>Nftism</title>
