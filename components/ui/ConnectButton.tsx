@@ -61,7 +61,12 @@ const ConnectorButtons: React.FC = ({ buttonClass }: any) => {
       {
         // eslint-disable-next-line
       }
-      {error && typeof error === "object" && error.message !== undefined && error.name !== undefined && error.name !== "UserRejectedRequestError" && <div>{error.message}</div>}
+      {error &&
+      typeof error === "object" &&
+      error.message !== undefined &&
+      error.name !== undefined &&
+      error.name !== "UserRejectedRequestError" &&
+      <div>{error.message}</div>}
       {/* {error && <div>{error?.message ?? "Failed to connect"}</div>} */}
     </Flex>
   );
