@@ -14,29 +14,66 @@ import {
 
 import useLogin from "@lib/hooks/useLogin";
 import useUser from "@lib/hooks/useUser";
+import useDevice from "@utils/useDeviceHook"
+import { useEffect } from "react";
 
 const ConnectorButtons: React.FC = ({ buttonClass }: any) => {
   const [{ data, error }, connect] = useConnect();
   const { login } = useLogin();
+  const { isMobile } = useDevice()
+
+  useEffect(() => {
+    if (error) {
+      console.log(error.name)
+    }
+  }, [error])
 
   return (
     <Flex style={{ padding: "1em" }} direction="column">
-      {data.connectors.map((connector) => (
-        <button
-          disabled={!connector.ready}
-          key={connector.id}
-          className={buttonClass}
-          onClick={async () => {
-            await connect(connector);
-            await login();
-          }}
-        >
-          {connector.name}
-          {!connector.ready && " (unsupported)"}
-        </button>
-      ))}
-
-      {error && <div>{error?.message ?? "Failed to connect"}</div>}
+      {data.connectors.map((connector) => {
+        if (isMobile()) {
+          return (
+            <>
+              <button
+                disabled={!connector.ready}
+                key={connector.id}
+                className={buttonClass}
+                onClick={async () => {
+                  await connect(connector);
+                  await login();
+                }}
+              >
+                {connector.ready && (
+                  connector.name
+                )}
+              </button>
+            </>
+          )
+        }
+        return (
+          <>
+            <button
+              disabled={!connector.ready}
+              key={connector.id}
+              className={buttonClass}
+              onClick={async () => {
+                await connect(connector);
+                await login();
+              }}
+            >
+              {connector.name}
+              {!connector.ready && " (unsupported)"}
+            </button>
+          </>
+        )
+      })}
+      {error
+        && typeof error === "object"
+        && error.message !== undefined
+        && error.name !== undefined
+        && error.name !== "UserRejectedRequestError"
+        && <div>{error.message}</div>}
+      {/* {error && <div>{error?.message ?? "Failed to connect"}</div>} */}
     </Flex>
   );
 };
