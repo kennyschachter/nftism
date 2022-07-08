@@ -5,15 +5,15 @@ import LandingLayout from "@components/layouts/LandingLayout";
 import BuyForm from "@components/BuyForm/BuyForm";
 import styles from "./index.module.css";
 import { useEffect } from "react";
+import { isIos } from "../../utils/useDeviceHook";
 import { isIOS, isIOS13, isIPod13, isIPhone13 } from "react-device-detect";
 
 const Raffle = ({ result, value: { showBuyForm, setShowBuyForm } }) => {
   useEffect(() => {
     if (document !== undefined) {
       const player = document.querySelector("#videoBanner");
-
-      // eslint-disable-next-line
-      if (!isIOS && !isIOS13 && !isIPod13 && !isIPhone13) {
+      
+      if (!isIOS || !isIOS13 || !isIPod13 || !isIPhone13) {
         if (navigator && navigator.mediaDevices) {
           const perm = navigator.mediaDevices.getUserMedia({
             audio: true,
