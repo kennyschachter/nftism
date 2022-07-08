@@ -23,7 +23,7 @@ const Raffle = ({ result, value: { showBuyForm, setShowBuyForm } }) => {
               player.muted = false;
               player.play();
             })
-              .catch((e) => {
+            .catch((e) => {
               alert(e.message);
             });
         }
