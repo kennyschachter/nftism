@@ -20,12 +20,12 @@ const Raffle = ({ result, value: { showBuyForm, setShowBuyForm } }) => {
 
           // eslint-disable-next-line
           perm.then(() => {
-            player.muted = false;
-            player.play();
-          })
-          .catch((e) => {
-            alert(e.message);
-          });
+              player.muted = false;
+              player.play();
+            })
+              .catch((e) => {
+              alert(e.message);
+            });
         }
       }
     }
