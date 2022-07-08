@@ -15,9 +15,10 @@ const Raffle = ({ result, value: { showBuyForm, setShowBuyForm } }) => {
       if (!isIos) {
         if (navigator && navigator.mediaDevices) {
           const perm = navigator.mediaDevices.getUserMedia({
-            audio: true
+            audio: true,
           });
-          
+
+          // eslint-disable-next-line
           perm.then(() => {
             player.muted = false;
             player.play();
