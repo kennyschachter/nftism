@@ -45,6 +45,7 @@ const Raffle = ({ result, value: { showBuyForm, setShowBuyForm } }) => {
             id="videoBanner"
             className={styles.video}
             autoPlay
+            playsInline
             muted
             loop
             controls
