@@ -13,10 +13,6 @@ const Raffle = ({ result, value: { showBuyForm, setShowBuyForm } }) => {
     if (document !== undefined) {
       const player = document.querySelector("#videoBanner");
 
-      if (isIOS) {
-        alert("device test");
-      }
-
       if (!isIOS) {
         if (navigator && navigator.mediaDevices) {
           const perm = navigator.mediaDevices.getUserMedia({
