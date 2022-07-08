@@ -4,8 +4,30 @@ import Head from "next/head";
 import LandingLayout from "@components/layouts/LandingLayout";
 import BuyForm from "@components/BuyForm/BuyForm";
 import styles from "./index.module.css";
+import { useEffect } from "react"
+import { isIos } from "../../utils/useDeviceHook"
 
 const Raffle = ({ result, value: { showBuyForm, setShowBuyForm } }) => {
+  useEffect(() => {
+    if(document !== undefined) {
+      const player = document.querySelector("#videoBanner")
+
+      if(!isIos) {
+        if (navigator && navigator.mediaDevices) {
+          const perm = navigator.mediaDevices.getUserMedia({
+              audio: true
+          })
+          
+          perm.then(() => {
+              player.muted = false
+              player.play()
+          }).catch((e) => {
+              alert(e.message)
+          })
+        }
+      }
+    }
+  }, [])
   return (
     <LandingLayout value={{ showBuyForm, setShowBuyForm }}>
       <div className={styles.home}>
@@ -16,7 +38,7 @@ const Raffle = ({ result, value: { showBuyForm, setShowBuyForm } }) => {
         </Head>
 
         <div className={styles.videoWrapper}>
-          <video className={styles.video} autoPlay muted loop controls>
+          <video id="videoBanner" className={styles.video} autoPlay muted loop controls>
             <source src={process.env.HERO_VIDEO_PATH} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
