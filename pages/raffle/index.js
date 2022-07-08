@@ -5,7 +5,6 @@ import LandingLayout from "@components/layouts/LandingLayout";
 import BuyForm from "@components/BuyForm/BuyForm";
 import styles from "./index.module.css";
 import { useEffect } from "react";
-import { isIos } from "../../utils/useDeviceHook";
 import { isIOS, isIOS13, isIPod13, isIPhone13 } from "react-device-detect";
 
 const Raffle = ({ result, value: { showBuyForm, setShowBuyForm } }) => {
