@@ -26,7 +26,7 @@ const VideoPlayer = (props) => {
         }
       }
     }
-  }, []);
+  }, [source]);
 
   return (
     <div className={styles.videoWrapper}>

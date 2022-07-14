@@ -15,22 +15,7 @@ const Raffle = ({ result, value: { showBuyForm, setShowBuyForm } }) => {
           <meta name="description" content="nftism app" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-
-        {/* <div className={styles.videoWrapper}>
-          <video
-            id="videoBanner"
-            className={styles.video}
-            autoPlay
-            playsInline
-            muted
-            loop
-            controls
-          >
-            <source src={process.env.HERO_VIDEO_PATH} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div> */}
-        <VideoPlayer source={process.env.HERO_VIDEO_PATH} />
+        <VideoPlayer source="https://res.cloudinary.com/dvqu9ifm2/video/upload/v1656440152/nftism_raffleIntro_12_gjlusk.mp4" />
         <h1 className={styles.title}>RAFFLE</h1>
         {result.length &&
           result.map((raffle, index) => (
