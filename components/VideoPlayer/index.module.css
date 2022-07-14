@@ -1,0 +1,10 @@
+.videoWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .video {
+    width: 95vw;
+    height: 700px;
+  }

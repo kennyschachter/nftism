@@ -4,33 +4,9 @@ import Head from "next/head";
 import LandingLayout from "@components/layouts/LandingLayout";
 import BuyForm from "@components/BuyForm/BuyForm";
 import styles from "./index.module.css";
-import { useEffect } from "react";
-import { isIos } from "../../utils/useDeviceHook";
-import { isIOS, isIOS13, isIPod13, isIPhone13 } from "react-device-detect";
+import VideoPlayer from "@components/VideoPlayer";
 
 const Raffle = ({ result, value: { showBuyForm, setShowBuyForm } }) => {
-  useEffect(() => {
-    if (document !== undefined) {
-      const player = document.querySelector("#videoBanner");
-
-      if (!isIOS) {
-        if (navigator && navigator.mediaDevices) {
-          const perm = navigator.mediaDevices.getUserMedia({
-            audio: true,
-          });
-
-          // eslint-disable-next-line
-          perm.then(() => {
-              player.muted = false;
-              player.play();
-            })
-            .catch((e) => {
-              alert(e.message);
-            });
-        }
-      }
-    }
-  }, []);
   return (
     <LandingLayout value={{ showBuyForm, setShowBuyForm }}>
       <div className={styles.home}>
@@ -40,11 +16,10 @@ const Raffle = ({ result, value: { showBuyForm, setShowBuyForm } }) => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <div className={styles.videoWrapper}>
+        {/* <div className={styles.videoWrapper}>
           <video
             id="videoBanner"
             className={styles.video}
-            preload="auto"
             autoPlay
             playsInline
             muted
@@ -54,7 +29,8 @@ const Raffle = ({ result, value: { showBuyForm, setShowBuyForm } }) => {
             <source src={process.env.HERO_VIDEO_PATH} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-        </div>
+        </div> */}
+        <VideoPlayer source={process.env.NEXT_PUBLIC_HERO_VIDEO_PATH} />
         <h1 className={styles.title}>RAFFLE</h1>
         {result.length &&
           result.map((raffle, index) => (
