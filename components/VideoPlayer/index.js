@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import styles from './index.module.css';
+import styles from "./index.module.css";
 import { isIOS } from "react-device-detect";
 
 const VideoPlayer = (props) => {
@@ -43,7 +43,7 @@ const VideoPlayer = (props) => {
         Your browser does not support the video tag.
       </video>
     </div>
-  )
+  );
 };
 
 export default VideoPlayer;
