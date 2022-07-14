@@ -30,7 +30,7 @@ const Raffle = ({ result, value: { showBuyForm, setShowBuyForm } }) => {
             Your browser does not support the video tag.
           </video>
         </div> */}
-        <VideoPlayer source={process.env.NEXT_PUBLIC_HERO_VIDEO_PATH} />
+        <VideoPlayer source={process.env.HERO_VIDEO_PATH} />
         <h1 className={styles.title}>RAFFLE</h1>
         {result.length &&
           result.map((raffle, index) => (
