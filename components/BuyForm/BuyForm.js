@@ -130,7 +130,7 @@ const BuyForm = ({ value: { showBuyForm, setShowBuyForm } }) => {
                       )}
                     </div>
                     <div className={styles.input}>
-                      <label>Full  Address</label>
+                      <label>Full Address</label>
                       <input
                         type="text"
                         placeholder="Full Address"
