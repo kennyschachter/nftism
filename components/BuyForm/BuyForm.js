@@ -130,10 +130,10 @@ const BuyForm = ({ value: { showBuyForm, setShowBuyForm } }) => {
                       )}
                     </div>
                     <div className={styles.input}>
-                      <label>Address</label>
+                      <label>Full  Address</label>
                       <input
                         type="text"
-                        placeholder="Address"
+                        placeholder="Full Address"
                         {...register("address", {
                           required: {
                             value: true,
@@ -148,10 +148,10 @@ const BuyForm = ({ value: { showBuyForm, setShowBuyForm } }) => {
                       )}
                     </div>
                     <div className={styles.input}>
-                      <label>Country</label>
+                      <label>Wallet ID</label>
                       <input
                         type="text"
-                        placeholder="Country"
+                        placeholder="Wallet ID"
                         {...register("country", {
                           required: {
                             value: true,
